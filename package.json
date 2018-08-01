@@ -7,13 +7,20 @@
     "test": "jest"
   },
   "dependencies": {
+    "firebase": "^4.9.0",
     "react": "16.4.1",
-    "react-native": "0.56.0"
+    "react-native": "0.56.0",
+    "react-native-hamburger": "0.0.2",
+    "react-native-sound": "^0.10.5",
+    "react-navigation": "^2.9.3",
+    "react-redux": "^5.0.6",
+    "redux": "^3.7.2"
   },
   "devDependencies": {
     "babel-jest": "23.4.0",
     "babel-preset-react-native": "5.0.2",
     "jest": "23.4.1",
+    "react-native-dotenv": "^0.2.0",
     "react-test-renderer": "16.4.1"
   },
   "jest": {

@@ -6,44 +6,42 @@
  * @flow
  */
 
-import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+// import React, {Component} from 'react';
+// import {Platform, StyleSheet, Text, View} from 'react-native';
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
+import React, { Component } from 'react';
+import { View, ScrollView, AsyncStorage, Text } from 'react-native';
+import { Header, Footer } from './src/components/common';
 
-type Props = {};
-export default class App extends Component<Props> {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
-      </View>
-    );
-  }
+import Navigator from './src/Router'
+
+import * as firebase from 'firebase';
+
+
+console.ignoredYellowBox = [
+    'Setting a timer'
+];
+
+export default class App extends Component {
+    componentWillMount() {
+        const config = {
+            apiKey: "AIzaSyBzfbKvUwuCeATyy-OXJ25hw02Tak1DTVM",
+            authDomain: "birdy-session2.firebaseapp.com",
+            databaseURL: "https://birdy-session2.firebaseio.com",
+            projectId: "birdy-session2",
+            storageBucket: "birdy-session2.appspot.com",
+            messagingSenderId: "961180564419"
+        };
+        firebase.initializeApp(config);
+    }
+    render() {
+        return (
+            <View style={{flexGrow:1, maxHeight:'100%'}}>
+              <Header content={'Birdy'} />
+                <ScrollView  contentContainerStyle={{flexGrow:1}}>
+                    <Navigator/>
+                </ScrollView>
+            </View>
+        );
+    }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
