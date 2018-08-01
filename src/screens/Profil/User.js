@@ -1,6 +1,6 @@
-import React from 'react';
-import { Text, View, FlatList, TouchableOpacity, AsyncStorage, ScrollView } from 'react-native';
-import styles from './styles';
+import React from 'react'
+import { Image, Text, View, FlatList, TouchableOpacity, AsyncStorage, ScrollView } from 'react-native'
+import styles from './styles'
 import firebase from 'firebase'
 import  { BurgerMenu, Footer, Spinner } from '../../components/common'
 
@@ -15,6 +15,7 @@ export default class User extends React.Component{
     state = {
         user:{
             email: AsyncStorage.getItem('userEmail'),
+            img: 'aezifygsdiuvg',
             displayName:''
         },
         myUid: null
@@ -45,11 +46,24 @@ export default class User extends React.Component{
         return (
             <View style={styles.container}>
                 <ScrollView  contentContainerStyle={{flexGrow:1}}>
+                     <Image
+                       style={{
+                         paddingVertical: 30,
+                         width: 150,
+                         height: 150,
+                         borderRadius: 75
+                       }}
+                       resizeMode='cover'
+                       source={{
+                         uri: 'https://www.sparklabs.com/forum/styles/comboot/theme/images/default_avatar.jpg'
+                       }}
+                     />
                     <View style={styles.content}>
                         <FlatList
                             data={[
                                 {key: 'Nom : ' + this.state.user.displayName},
                                 {key: 'Adresse email : ' + this.state.user.email},
+                                {key: 'Img : ' + this.state.user.img},
                             ]}
                             renderItem={({item}) => <Text style={styles.item}>{item.key}</Text>}
                         />

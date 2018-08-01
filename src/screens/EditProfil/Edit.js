@@ -1,5 +1,6 @@
 import React from 'react'
-import { Text, View, TouchableOpacity, AsyncStorage, ScrollView } from 'react-native'
+import { Image, Text, View, TouchableOpacity, AsyncStorage, ScrollView } from 'react-native'
+import PhotoUpload from 'react-native-photo-upload'
 import styles from './styles'
 import firebase from 'firebase'
 import { Spinner, TextInputAndLabel, BurgerMenu, Footer } from '../../components/common'
@@ -16,6 +17,7 @@ export default class Edit extends React.Component{
         email : '',
         displayName:'',
         uid : '',
+        img: '',
         loading : false,
     };
 
@@ -63,6 +65,7 @@ export default class Edit extends React.Component{
         firebase.database().ref('users/' + user.uid).set({
             displayName: this.state.displayName,
             email: this.state.email,
+            img: this.state.img,
         });
     }
 
@@ -75,6 +78,30 @@ export default class Edit extends React.Component{
         return (
             <View style={styles.container}>
                 <ScrollView  contentContainerStyle={{flexGrow:1}}>
+                  <Text>{this.state.img}</Text>
+                  <PhotoUpload
+                       onPhotoSelect={avatar => {
+                         if (avatar) {
+                           this.setState({
+                             img: avatar
+                           })
+                           console.log('Image base64 string: ', avatar)
+                         }
+                       }}
+                     >
+                     <Image
+                       style={{
+                         paddingVertical: 30,
+                         width: 150,
+                         height: 150,
+                         borderRadius: 75
+                       }}
+                       resizeMode='cover'
+                       source={{
+                         uri: 'https://www.sparklabs.com/forum/styles/comboot/theme/images/default_avatar.jpg'
+                       }}
+                     />
+                   </PhotoUpload>
                     <View style={styles.content}>
                         {(this.state.loading) ? (
                             <View style={styles.spinnerContainer}>
