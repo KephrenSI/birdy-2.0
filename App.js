@@ -9,18 +9,12 @@
 // import React, {Component} from 'react';
 // import {Platform, StyleSheet, Text, View} from 'react-native';
 
-import React, { Component } from 'react';
-import { View, ScrollView, AsyncStorage, Text } from 'react-native';
-import { Header, Footer } from './src/components/common';
+import React, { Component } from 'react'
+import { View, ScrollView, AsyncStorage, Text } from 'react-native'
+import MainStackNavigator from './src/components/MainNavigator'
+import * as firebase from 'firebase'
 
-import Navigator from './src/Router'
-
-import * as firebase from 'firebase';
-
-
-console.ignoredYellowBox = [
-    'Setting a timer'
-];
+console.disableYellowBox = true;
 
 export default class App extends Component {
     componentWillMount() {
@@ -37,9 +31,8 @@ export default class App extends Component {
     render() {
         return (
             <View style={{flexGrow:1, maxHeight:'100%'}}>
-              <Header content={'Birdy'} />
                 <ScrollView  contentContainerStyle={{flexGrow:1}}>
-                    <Navigator/>
+                    <MainStackNavigator/>
                 </ScrollView>
             </View>
         );

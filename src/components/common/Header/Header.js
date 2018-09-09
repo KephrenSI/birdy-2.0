@@ -1,15 +1,45 @@
 import React from 'react';
-import {Text, View} from 'react-native';
-import styles from './styles';
+import {Text, View, StyleSheet, Image} from 'react-native';
 
-
-
-// On passe un Object props à la fonction header, fourni par le parent lors de l'appel. On récupère ensuite la valeur qui nous intéresse dans cet objet.
 const Header = (props) => {
     return (
         <View style={styles.container}>
-            <Text style={styles.text}> {props.content} </Text>
+            <View style={styles.box}>
+                <Image
+                    // source={require('../../assets/img/Feed2.jpg')}
+                    source={require('../../assets/img/Feed.jpg')}
+                    // source={{ uri: 'https://upload.wikimedia.org/wikipedia/commons/3/36/Hopetoun_falls.jpg' }}
+                    //style={StyleSheet.absoluteFill}
+                    style={styles.headerBackground}
+                />
+            </View>
         </View>
     );
 };
 export {Header};
+
+const styles = StyleSheet.create({
+    container:{
+        paddingTop: 150,
+    },
+    box:{
+        flex: 1,
+        height: 150,
+        left: 0,
+        position: 'absolute',
+        right: 0,
+        top: 0,
+        zIndex: 1,
+    },
+    text:{
+        fontSize: 22,
+        fontWeight: 'bold',
+        color: '#aafefe'
+    },
+    headerBackground:{
+        // height: 150,
+        flex: 1,
+        height: null,
+        width: null,
+    }
+});

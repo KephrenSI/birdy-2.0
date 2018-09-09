@@ -1,9 +1,6 @@
-import React from 'react';
-import {Text, View} from 'react-native';
-import styles from './styles';
+import React from 'react'
+import {Text, View, StyleSheet} from 'react-native'
 
-
-// On passe un Object props à la fonction header, fourni par le parent lors de l'appel. On récupère ensuite la valeur qui nous intéresse dans cet objet.
 const Footer = (props) => {
     return (
         <View style={styles.container}>
@@ -12,3 +9,17 @@ const Footer = (props) => {
     );
 };
 export {Footer};
+
+const styles = StyleSheet.create({
+    container:{
+        height: 40,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop: 30,
+
+    },
+    text:{
+        color: '#A4A4A4',
+        alignSelf: 'center'
+    }
+});

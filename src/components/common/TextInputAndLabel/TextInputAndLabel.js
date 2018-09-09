@@ -1,23 +1,31 @@
-import React, {Component} from 'react';
-import { View, TextInput, Text} from 'react-native';
+import React, {Component} from 'react'
+import { View, TextInput, Text, StyleSheet} from 'react-native'
+import { FormInput, FormLabel, FormValidationMessage } from 'react-native-elements'
 
-import styles from './styles';
-
-const TextInputAndLabel = ({ label, placeholder, value, onChangeText, secureTextEntry, autoCapitalize, keyboardType })=>{
+const TextInputAndLabel = ({ label, placeholder, value, onChangeText, secureTextEntry, autoCapitalize, keyboardType, error })=>{
     return(
-        <View style={styles.container}>
-            <Text style={styles.label}>{label}</Text>
-            <TextInput
+        <View>
+            <FormLabel style={styles.label}>{label}</FormLabel>
+            <FormInput
+                style={styles.input}
                 secureTextEntry={secureTextEntry}
                 placeholder={placeholder}
-                style={styles.input}
                 onChangeText={onChangeText}
                 autoCorrect={false}
                 autoCapitalize={autoCapitalize}
                 keyboardType={keyboardType}
                 value={value}
             />
+          <FormValidationMessage>{error}</FormValidationMessage>
         </View>
     );
 };
 export {TextInputAndLabel};
+
+const styles = StyleSheet.create({
+    input: {
+        
+    },
+    label: {
+    },
+})
